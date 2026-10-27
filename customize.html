@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>নিজের ঘর সাজান — Shah Neil Khan</title>
+<style>
+:root{--bg:#0c0c0e;--ink:#efe9dd;--mute:#a79d89;--line:#4a3f27;--acc:#d4af37;--onacc:#16120a;--card:#16151a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif;display:flex;flex-direction:column}
+header{padding:10px 14px 2px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:1.25rem;margin:0;color:var(--acc)}
+#sel{margin:2px 0 0;font-size:.85rem;color:var(--mute)}
+#c{flex:1;min-height:0;width:100%;display:block;touch-action:none}
+.dock{padding:8px 12px 10px;border-top:1px solid var(--line);background:var(--card)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:8px}
+.sw{width:34px;height:34px;border-radius:50%;border:2px solid var(--line);padding:0;cursor:pointer}
+.sw:focus-visible,button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+button.chip{border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:999px;padding:7px 12px;font:inherit;font-size:.82rem;cursor:pointer}
+button.chip[aria-pressed="true"]{background:var(--acc);color:var(--onacc);font-weight:700}
+.mv{width:40px;height:40px;border-radius:10px;border:1px solid var(--line);background:transparent;color:var(--ink);font-size:1rem;cursor:pointer}
+.lb{font-size:.72rem;color:var(--mute);margin-right:2px}
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8F%A0%3C/text%3E%3C/svg%3E"><meta name="theme-color" content="#0c0c0e"><meta name="description" content="রং বদলান, আসবাব সরান, দিন-রাতের আলোয় নিজের ঘর সাজিয়ে দেখুন।"><meta property="og:title" content="নিজের ঘর সাজান — Shah Neil Khan"><meta property="og:description" content="রং বদলান, আসবাব সরান, দিন-রাতের আলোয় নিজের ঘর সাজিয়ে দেখুন।"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style id="skin">:root{--bg:#0f2a22;--ink:#f3ecd9;--mute:#a9bfb2;--line:#2f5b4a;--acc:#e2b84a;--onacc:#1b2a10;--card:#143428;color-scheme:dark}
+body{background:radial-gradient(800px 420px at 20% -10%,#1d4a3a,transparent 60%),var(--bg)}
+h1{font-size:1.45rem!important;letter-spacing:.01em}
+.dock{border-radius:24px 24px 0 0;border:1px solid var(--line);border-bottom:0;box-shadow:0 -10px 30px rgba(0,0,0,.25)}
+.sw{border-color:rgba(226,184,74,.45)}
+.mv{border-color:var(--line);border-radius:12px}
+#c{background:#0f2a22}a[href="index.html"],a[href="../index.html"],#langbtn{background:var(--card)!important;border:1px solid var(--line)!important;color:var(--ink)!important}header{padding-top:52px!important}</style></head>
+<body><a href="index.html" style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);right:12px;z-index:50;background:rgba(22,21,26,.88);border:1px solid #4a3f27;color:#d4af37;padding:6px 12px;border-radius:999px;font:.8rem system-ui,sans-serif;text-decoration:none">← হোম</a>
+<header><h1>নিজের ঘর সাজান</h1><p id="sel">যেকোনো জিনিসে ট্যাপ করুন: দেয়াল, মেঝে, সোফা...</p></header>
+<canvas id="c"></canvas>
+<div class="dock">
+<div class="row" id="sws" aria-label="রং"></div>
+<div class="row"><span class="lb">সরান</span><button class="mv" data-d="-1,0" aria-label="বাঁয়ে">◀</button><button class="mv" data-d="0,-1" aria-label="পেছনে">▲</button><button class="mv" data-d="0,1" aria-label="সামনে">▼</button><button class="mv" data-d="1,0" aria-label="ডানে">▶</button><button class="chip" id="rs" style="margin-left:auto">রিসেট</button></div>
+<div class="row" id="tm"><span class="lb">সময়</span></div>
+<div class="row" id="tg"><span class="lb">দেখান/লুকান</span></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const $=id=>document.getElementById(id);
+const cv=$('c'),renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+const scene=new THREE.Scene();scene.background=new THREE.Color(0x15151a);
+const camera=new THREE.PerspectiveCamera(48,1,.1,60);camera.position.set(4.6,3.6,6.4);
+const controls=new THREE.OrbitControls(camera,cv);controls.target.set(0,1,0);controls.enableDamping=true;
+const amb=new THREE.AmbientLight(0xffffff,.8);scene.add(amb);const sun=new THREE.DirectionalLight(0xfff2dd,.9);sun.position.set(3,5,4);scene.add(sun);const ceilL=new THREE.PointLight(0xffe2b0,0,10,1);ceilL.position.set(0,2.5,0);scene.add(ceilL);
+const W=4.5,D=3.5,H=2.8,items={};
+const mat=c=>new THREE.MeshStandardMaterial({color:c,roughness:.85});
+function item(key,label,move,build){
+  const g=new THREE.Group();g.userData={key,label,move};
+  const bx=(w,h,d,c,x,y,z,fixed)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m.position.set(x,y,z);m.userData.fixed=!!fixed;m.userData.base=c;g.add(m);return m};
+  build(g,bx);scene.add(g);items[key]=g;g.userData.home=g.position.clone();
+  g.traverse(m=>{if(m.isMesh)m.userData.base=m.material.color.getHex()});return g}
+item('floor','মেঝে',false,(g,b)=>b(W,.1,D,0xc9a77c,0,-.05,0));
+item('wall','দেয়াল',false,(g,b)=>{const c=0xf6f1e7,z=-D/2;b(.1,H,D,0xeae3d3,-W/2,H/2,0);b(.4,H,.1,c,-2.05,H/2,z);b(1.05,H,.1,c,-.425,H/2,z);b(.75,H,.1,c,1.875,H/2,z);b(.9,.7,.1,c,-1.4,2.45,z);b(1.4,1.05,.1,c,.8,.525,z);b(1.4,.65,.1,c,.8,2.475,z);b(1.4,1.1,.04,0x9fd3f2,.8,1.6,z,true)});
+item('door','দরজা',false,(g,b)=>{g.position.set(-1.85,0,-D/2+.06);b(.9,2.1,.05,0x8a5a33,.45,1.05,0);b(.05,.12,.12,0xd4af37,.8,1,.06,true)});
+item('rug','কার্পেট',true,(g,b)=>b(2.4,.02,1.6,0x6b8fa3,0,.01,.2));
+item('sofa','সোফা',true,(g,b)=>{b(2,.45,.9,0x4a6572,0,.25,-1.2);b(2,.5,.2,0x4a6572,0,.7,-1.6);b(.2,.3,.9,0x4a6572,-1,.5,-1.2);b(.2,.3,.9,0x4a6572,1,.5,-1.2)});
+item('table','কফি টেবিল',true,(g,b)=>{b(1,.05,.6,0x7a5230,0,.4,.3);[[-.45,-.25],[.45,-.25],[-.45,.25],[.45,.25]].forEach(([x,z])=>b(.05,.4,.05,0x7a5230,x,.2,.3+z))});
+item('tv','টিভি ইউনিট',true,(g,b)=>{b(.4,.5,1.6,0x5c3d22,-W/2+.25,.25,.2);b(.05,.6,1.1,0x111111,-W/2+.15,1,.2,true)});
+item('shelf','বইয়ের তাক',true,(g,b)=>{b(.35,1.8,1,0x8b6b4a,W/2-.3,.9,-1.2)});
+item('lamp','ল্যাম্প',true,(g,b)=>{b(.05,1.4,.05,0x333333,1.8,.7,-1.4,true);b(.4,.3,.4,0xffe9b0,1.8,1.5,-1.4)});
+item('plant','গাছ',true,(g,b)=>{b(.35,.4,.35,0x8a5a33,-1.6,.2,-1.4);b(.6,.7,.6,0x4e8a4a,-1.6,.75,-1.4)});
+// start with only some optional items visible
+items.shelf.visible=false;items.plant.visible=false;
+const COL=[0xf4f4f1,0xd8c3a0,0x9aa0a6,0x3b3f45,0x2f4a6d,0x2f7f7a,0xa9bba0,0xb5593b,0xd4a72c,0x8a5a33,0xe8c4c4,0x1b1b1d];
+COL.forEach(c=>{const b=document.createElement('button');b.className='sw';b.style.background='#'+c.toString(16).padStart(6,'0');b.setAttribute('aria-label','রং');b.onclick=()=>paint(c);$('sws').appendChild(b)});
+['rug','sofa','table','tv','shelf','lamp','plant'].forEach(k=>{const b=document.createElement('button');b.className='chip';b.textContent=items[k].userData.label;b.setAttribute('aria-pressed',items[k].visible);
+  b.onclick=()=>{items[k].visible=!items[k].visible;b.setAttribute('aria-pressed',items[k].visible);if(!items[k].visible&&sel===items[k])pick(null)};$('tg').appendChild(b)});
+let sel=null;
+function glow(g,on){g.traverse(m=>{if(m.isMesh&&m.material.emissive)m.material.emissive.setHex(on?0x3a2c00:0)})}
+function pick(g){if(sel)glow(sel,false);sel=g;if(g)glow(g,true);$('sel').textContent=g?'বাছাই: '+g.userData.label+' — নিচে রং বা সরানোর বাটন চাপুন':'যেকোনো জিনিসে ট্যাপ করুন: দেয়াল, মেঝে, সোফা...'}
+function paint(c){if(!sel){$('sel').textContent='আগে কোনো জিনিসে ট্যাপ করুন';return}sel.traverse(m=>{if(m.isMesh&&!m.userData.fixed)m.material.color.setHex(c)})}
+document.querySelectorAll('.mv').forEach(b=>b.onclick=()=>{if(!sel||!sel.userData.move)return;const[a,z]=b.dataset.d.split(',').map(Number);
+  sel.position.x=Math.max(-W/2+.4,Math.min(W/2-.4,sel.position.x+a*.25));sel.position.z=Math.max(-D/2+.4,Math.min(D/2-.4,sel.position.z+z*.25))});
+$('rs').onclick=()=>{pick(null);Object.values(items).forEach(g=>{g.position.copy(g.userData.home);g.traverse(m=>{if(m.isMesh)m.material.color.setHex(m.userData.base)})});doorT=0;setTime(tm)};
+// day / night and lamp
+const lamp=items.lamp,lampL=new THREE.PointLight(0xffd9a0,0,7,1);lampL.position.set(1.8,1.5,-1.4);lamp.add(lampL);
+const bulb=new THREE.Mesh(new THREE.SphereGeometry(.09,16,12),new THREE.MeshBasicMaterial({color:0x777777}));bulb.position.set(1.8,1.5,-1.4);bulb.userData.base=0x777777;bulb.userData.fixed=true;lamp.add(bulb);
+const glass=items.wall.children.find(m=>m.userData.fixed);
+const TM={day:{n:'☀️ দিন',bg:0xcfe3f2,amb:.8,sun:.9,sc:0xfff2dd,gl:0x9fd3f2,on:false},eve:{n:'🌇 সন্ধ্যা',bg:0x4a3345,amb:.45,sun:.45,sc:0xffa868,gl:0xf0a060,on:true},night:{n:'🌙 রাত',bg:0x080b16,amb:.16,sun:.12,sc:0x6f8cff,gl:0x1b2a4a,on:true}};
+let tm='day',lampOn=false;
+function applyLamp(){lampL.intensity=lampOn?1.2:0;ceilL.intensity=lampOn?.9:0;bulb.material.color.setHex(lampOn?0xfff0b0:0x777777);const b=$('bt');if(b)b.setAttribute('aria-pressed',lampOn)}
+function setTime(k){tm=k;const T=TM[k];scene.background.setHex(T.bg);amb.intensity=T.amb;sun.intensity=T.sun;sun.color.setHex(T.sc);glass.material.color.setHex(T.gl);lampOn=T.on;document.querySelectorAll('[data-t]').forEach(b=>b.setAttribute('aria-pressed',b.dataset.t===k));applyLamp()}
+Object.keys(TM).forEach(k=>{const b=document.createElement('button');b.className='chip';b.dataset.t=k;b.textContent=TM[k].n;b.onclick=()=>setTime(k);$('tm').appendChild(b)});
+{const b=document.createElement('button');b.className='chip';b.id='bt';b.textContent='💡 বাতি';b.onclick=()=>{lampOn=!lampOn;applyLamp()};$('tm').appendChild(b)}
+setTime('day');
+let doorT=0;function toggleDoor(){doorT=doorT?0:-Math.PI/2*.95}
+{const b=document.createElement('button');b.className='chip';b.textContent='🚪 দরজা';b.onclick=()=>toggleDoor();$('tm').appendChild(b)}
+// tap to select (ignore drags)
+const ray=new THREE.Raycaster(),pt=new THREE.Vector2();let down=null;
+cv.addEventListener('pointerdown',e=>down=[e.clientX,e.clientY]);
+cv.addEventListener('pointerup',e=>{if(!down||Math.hypot(e.clientX-down[0],e.clientY-down[1])>6)return;
+  const r=cv.getBoundingClientRect();pt.set((e.clientX-r.left)/r.width*2-1,-((e.clientY-r.top)/r.height)*2+1);ray.setFromCamera(pt,camera);
+  const hits=ray.intersectObjects(Object.values(items).filter(g=>g.visible),true);
+  let o=hits.length?hits[0].object:null;while(o&&!o.userData.key)o=o.parent;pick(o||null);if(o===items.door)toggleDoor()});
+function resize(){const w=cv.clientWidth,h=cv.clientHeight;renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+addEventListener('resize',resize);resize();
+(function loop(){requestAnimationFrame(loop);items.door.rotation.y+=(doorT-items.door.rotation.y)*.12;controls.update();renderer.render(scene,camera)})();
+</script>
+<script src="lang.js"></script></body>
+</html>

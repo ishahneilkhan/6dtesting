@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ডিজাইন স্টাইল গ্যালারি — Shah Neil Khan</title>
+<style>
+:root{--bg:#0c0c0e;--ink:#efe9dd;--mute:#a79d89;--line:#4a3f27;--acc:#d4af37;--onacc:#16120a;--card:#16151a;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Bengali","Hind Siliguri",system-ui,sans-serif}
+header{padding:14px 14px 4px}
+h1{font-family:Georgia,serif;font-weight:400;font-size:1.35rem;margin:0;color:var(--acc)}
+.sub{margin:2px 0 0;font-size:.78rem;color:var(--mute)}
+#c{display:block;width:100%;height:46vh;min-height:280px;touch-action:none}
+.bar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px 14px}
+button{border:1px solid var(--acc);color:var(--acc);background:transparent;border-radius:999px;padding:8px 14px;font:inherit;font-size:.88rem;cursor:pointer}
+button.pri{background:var(--acc);color:var(--onacc);font-weight:700}
+button:focus-visible,input:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+input{width:92px;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:8px;font:inherit}
+#info{padding:0 14px 6px;font-size:.85rem;color:var(--mute)}
+#grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;padding:6px 14px 14px}
+.t{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden;cursor:pointer;padding:0;text-align:left;color:var(--ink)}
+.t.on{border-color:var(--acc);box-shadow:0 0 0 2px var(--acc)}
+.t img{display:block;width:100%;height:auto}
+.t span{display:block;padding:6px 10px;font-size:.78rem;color:var(--mute)}
+</style>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%F0%9F%8F%A0%3C/text%3E%3C/svg%3E"><meta name="theme-color" content="#0c0c0e"><meta name="description" content="২৮৮০টি বাড়ির ডিজাইন স্টাইল সমন্বয় থেকে পছন্দ বেছে নিন।"><meta property="og:title" content="ডিজাইন স্টাইল গ্যালারি — Shah Neil Khan"><meta property="og:description" content="২৮৮০টি বাড়ির ডিজাইন স্টাইল সমন্বয় থেকে পছন্দ বেছে নিন।"><meta property="og:type" content="website"><meta name="twitter:card" content="summary"><style id="skin">:root{--bg:#f6f3ee;--ink:#14213d;--mute:#6b6f7b;--line:#e4ddd0;--acc:#14213d;--onacc:#f6f3ee;--card:#ffffff;--gold:#b8924a;color-scheme:light dark}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0f1420;--ink:#f1ece2;--mute:#a4a9b6;--line:#2a3144;--acc:#d9b779;--onacc:#14213d;--card:#171e2e;--gold:#d9b779}}
+body{background:linear-gradient(180deg,var(--bg),var(--bg))}
+header{padding:20px 16px 8px;text-align:center}
+h1{font-size:1.9rem!important;color:var(--ink)!important;letter-spacing:.01em}
+h1::after{content:"";display:block;width:54px;height:2px;background:var(--gold);margin:10px auto 0}
+.sub{color:var(--mute)}
+#c{margin:6px auto 0;width:calc(100% - 28px);border-radius:28px;box-shadow:0 14px 36px rgba(20,33,61,.14)}
+.bar{justify-content:center}
+button{border-radius:999px}
+button.pri{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
+#info{text-align:center;color:var(--mute)}
+.t{border-radius:16px;box-shadow:0 8px 22px rgba(20,33,61,.07)}
+.t.on{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold)}
+.t span{color:var(--mute)}a[href="index.html"],a[href="../index.html"],#langbtn{background:var(--card)!important;border:1px solid var(--line)!important;color:var(--ink)!important}header{padding-top:52px!important}</style></head>
+<body><a href="index.html" style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 8px);right:12px;z-index:50;background:rgba(22,21,26,.88);border:1px solid #4a3f27;color:#d4af37;padding:6px 12px;border-radius:999px;font:.8rem system-ui,sans-serif;text-decoration:none">← হোম</a>
+<header><h1>ডিজাইন স্টাইল গ্যালারি</h1><p class="sub">Shah Neil Khan · ২৮৮০টি স্টাইল সমন্বয় · ছাদ, সম্মুখভাগ, রং, জানালা, বারান্দা</p></header>
+<canvas id="c"></canvas>
+<div class="bar"><button id="pv" aria-label="আগের">◀</button><input id="n" type="number" min="1" max="2880" value="1"><button id="nx" aria-label="পরের">▶</button><button id="rd" class="pri">যেকোনো একটি</button></div>
+<div id="info"></div>
+<div id="grid"></div>
+<div class="bar"><button id="pp">আগের ১২টি</button><button id="pn">পরের ১২টি</button></div>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+<script>
+const TOTAL=2880,$=id=>document.getElementById(id);
+const ROOF=['সমতল ছাদ','ঢালু (গেবল) ছাদ','চার-ঢালু ছাদ','একমুখী ঢালু ছাদ','সমতল + সিঁড়িঘর','বাঁকা (ব্যারেল) ছাদ'];
+const FAC=['সাধারণ জানালা','লম্বা ফিতা-জানালা','বড় কাচের সামনে','লম্বা সরু জানালা','জানালা + উল্লম্ব ফিন'];
+const BAL=['বারান্দা নেই','সামনে বারান্দা','নিচে পোর্চ ও ছাউনি'];
+const PAL=[[0xf2efe8,0xffffff,0x5a5a5e,0x8a5a33],[0xd9d9dc,0x444448,0x2e2e32,0x2f6f8f],[0xb5593b,0xe8dccb,0x4a2f24,0x2b2b2b],[0xd8c3a0,0x7a5c3a,0x6b4a2b,0x3d2b1a],[0x9fb8cf,0xffffff,0x3b4f63,0xe0b341],[0xa9bba0,0xf2efe8,0x4d5d47,0x7a5c3a],[0x3b3f45,0xd4af37,0x1d2024,0xd4af37],[0xeadcc0,0xb3843a,0x9b5b34,0x2f4f4f]];
+const PN=['সাদা','ধূসর','ইটের লাল','মাটি','আকাশি','সবুজাভ','কালো-সোনালি','বালু'];
+const WIN=[[0x7fb8e0,0xffffff],[0x2c3a46,0x111111],[0xffd98a,0xffffff],[0x8fcfb4,0x222222]];
+const WN=['নীল কাচ','গাঢ় কাচ','উষ্ণ আলো','সবুজ কাচ'];
+function parts(i){return{roof:i%6,fac:Math.floor(i/6)%5,pal:Math.floor(i/30)%8,win:Math.floor(i/240)%4,bal:Math.floor(i/960)%3,F:1+Math.floor(i/7)%4}}
+function make(i){
+  const p=parts(i),pal=PAL[p.pal],win=WIN[p.win],F=p.F,g=new THREE.Group(),W=10,D=14,H=3;
+  const add=(geo,c,x,y,z,rz)=>{const m=new THREE.Mesh(geo,new THREE.MeshStandardMaterial({color:c,roughness:.8}));m.position.set(x,y,z);if(rz)m.rotation.z=rz;g.add(m);return m};
+  const B=(w,h,d,c,x,y,z)=>add(new THREE.BoxGeometry(w,h,d),c,x,y,z);
+  B(W+10,.2,D+10,0x4b7a44,0,-.1,0);B(W,F*H,D,pal[0],0,F*H/2,0);
+  for(let f=0;f<F;f++){
+    B(W+.3,.15,D+.3,pal[1],0,(f+1)*H-.075,0);
+    const y=f*H+1.7,fc=p.fac;
+    let fw;
+    if(f===0)fw=[{x:-3,w:1.6,h:1.3},{x:3,w:1.6,h:1.3}];
+    else if(fc===1)fw=[{x:0,w:8,h:1}];
+    else if(fc===2)fw=[{x:0,w:7,h:2.2}];
+    else if(fc===3)fw=[-3.6,-1.8,0,1.8,3.6].map(x=>({x,w:.8,h:1.8}));
+    else fw=[-3,0,3].map(x=>({x,w:1.4,h:1.3}));
+    [1,-1].forEach(s=>{fw.forEach(o=>{B(o.w+.15,o.h+.15,.06,win[1],o.x,y,s*(D/2+.01));B(o.w,o.h,.08,win[0],o.x,y,s*(D/2+.04))});
+      if(fc===4&&f>0)[-4.5,-1.5,1.5,4.5].forEach(x=>B(.3,H,.5,pal[1],x,f*H+H/2,s*(D/2+.2)))});
+    const sw=fc===1?[-3.5,3.5]:[-4,0,4],ww=fc===1?5:1.6,wh=fc===2?1.8:1.3;
+    [1,-1].forEach(s=>sw.forEach(z=>{B(.06,wh+.15,ww+.15,win[1],s*(W/2+.01),y,z);B(.08,wh,ww,win[0],s*(W/2+.04),y,z)}));
+    if(p.bal===1&&f>0){B(5,.2,1.5,pal[1],0,f*H,D/2+.75);B(5,.9,.06,win[0],0,f*H+.55,D/2+1.45)}
+  }
+  B(1.2,2.2,.1,pal[3],0,1.1,D/2+.05);
+  if(p.bal===2){B(6,.2,2,pal[1],0,.1,D/2+1);[-2.5,2.5].forEach(x=>B(.25,H,.25,pal[1],x,H/2,D/2+1.8));B(6.4,.2,2.4,pal[2],0,H+.1,D/2+1)}
+  const y0=F*H,rc=pal[2];
+  if(p.roof===0)B(W+.4,.3,D+.4,rc,0,y0+.15,0);
+  else if(p.roof===1){const s=new THREE.Shape();s.moveTo(-W/2-.3,0);s.lineTo(W/2+.3,0);s.lineTo(0,2.6);const m=add(new THREE.ExtrudeGeometry(s,{depth:D+.8,bevelEnabled:false}),rc,0,y0,-(D+.8)/2)}
+  else if(p.roof===2){const m=add(new THREE.ConeGeometry(1,2.4,4),rc,0,y0+1.2,0);m.rotation.y=Math.PI/4;m.scale.set(W/Math.SQRT2*1.05,1,D/Math.SQRT2*1.05)}
+  else if(p.roof===3)add(new THREE.BoxGeometry(W+.6,.3,D+.6),rc,0,y0+.6,0,.2);
+  else if(p.roof===4){B(W+1.6,.3,D+1.6,rc,0,y0+.15,0);B(2.5,2.2,3,pal[0],-2.5,y0+1.4,-3)}
+  else{const geo=new THREE.CylinderGeometry(W/2,W/2,D+.4,32);geo.rotateX(Math.PI/2);const m=add(geo,rc,0,y0,0);m.scale.y=.35}
+  return g;
+}
+function lights(s){s.add(new THREE.AmbientLight(0xffffff,.85));const d=new THREE.DirectionalLight(0xffffff,.8);d.position.set(20,40,30);s.add(d)}
+// main viewer
+const cv=$('c'),renderer=new THREE.WebGLRenderer({canvas:cv,antialias:true});
+const scene=new THREE.Scene();scene.background=new THREE.Color(0xdfe7ee);lights(scene);
+const camera=new THREE.PerspectiveCamera(40,1,.1,300);
+const controls=new THREE.OrbitControls(camera,cv);controls.enableDamping=true;controls.autoRotate=true;controls.autoRotateSpeed=1.5;
+let cur=0,model=null;
+function show(i){
+  cur=(i+TOTAL)%TOTAL;if(model)scene.remove(model);model=make(cur);scene.add(model);
+  const p=parts(cur);controls.target.set(0,p.F*1.4,0);camera.position.set(26,8+p.F*2,32);
+  $('n').value=cur+1;
+  $('info').textContent=`স্টাইল #${cur+1} · ${p.F} তলা · ${ROOF[p.roof]} · ${FAC[p.fac]} · রং: ${PN[p.pal]} · ${WN[p.win]} · ${BAL[p.bal]}`;
+  grid();
+}
+// thumbnails
+const tr=new THREE.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});tr.setSize(240,170);
+function thumb(i){const s=new THREE.Scene();s.background=new THREE.Color(0xdfe7ee);lights(s);s.add(make(i));const c=new THREE.PerspectiveCamera(40,240/170,.1,300);c.position.set(26,16,34);c.lookAt(0,5,0);tr.render(s,c);return tr.domElement.toDataURL('image/jpeg',.7)}
+function grid(){
+  const st=Math.floor(cur/12)*12,g=$('grid');g.innerHTML='';
+  for(let k=0;k<12&&st+k<TOTAL;k++){const i=st+k,b=document.createElement('button');b.className='t'+(i===cur?' on':'');
+    b.innerHTML=`<img alt="স্টাইল ${i+1}" src="${thumb(i)}"><span>#${i+1}</span>`;b.onclick=()=>{show(i);scrollTo({top:0,behavior:'smooth'})};g.appendChild(b)}
+}
+$('pv').onclick=()=>show(cur-1);$('nx').onclick=()=>show(cur+1);
+$('rd').onclick=()=>show(Math.floor(Math.random()*TOTAL));
+$('n').onchange=()=>{const v=parseInt($('n').value);if(v>=1&&v<=TOTAL)show(v-1)};
+$('pp').onclick=()=>show((Math.floor(cur/12)-1)*12);$('pn').onclick=()=>show((Math.floor(cur/12)+1)*12);
+function resize(){const w=cv.clientWidth,h=cv.clientHeight;renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix()}
+addEventListener('resize',resize);resize();show((parseInt(location.hash.slice(1))||1)-1);
+(function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera)})();
+</script>
+<script src="lang.js"></script></body>
+</html>

@@ -1,51 +1,47 @@
-# SNK Architect — GitHub Pages Starter
+# SNK Architect — Phase 1 prototype
+Design Beyond Imagination. · Design • Build • Visualize
 
-A premium, responsive architecture/interior concept website with a basic interactive Three.js room preview.
+## Implemented now
+- Responsive site: `index.html`, `services.html`, `portfolio.html`, `contact.html`
+- Real Three.js room (r160 via pinned CDN import map): floor, walls with window and door, ceiling, furniture
+- Orbit / zoom / pan, reset view, wall colour, floor material, day / evening / night lighting, furniture toggles, fullscreen (where supported), PNG screenshot, loading + error states, resize handling, resource disposal
+- Portfolio and inquiry form driven by `js/site.js` (empty until you add real data)
 
-**Brand line:** Design Beyond Imagination  
-**Palette:** Charcoal `#111820`, slate `#202A34`, champagne gold `#D7B77B`, warm white `#F7F5F0`, cool grey `#B8C0C8`.
+- `planner.html` — Plan Studio: single-room 2D floor-plan editor (room size, 11 object types, drag / rotate / recolour, doors and windows snap to walls, dimension lines, m/ft, autosave in the browser) with a simplified 3D view and PNG export
 
-## Included
+## Not implemented (future plans)
+Plan Studio limits: one rectangular room, no wall drawing, no multiple floors, small object library, simplified 3D (translucent walls, box furniture).
+AI redesign, accounts, saved projects, GLB/GLTF models, textures, before/after comparison, estimates, backend.
+The 2D–6D page is a service description only.
 
-- Responsive landing page
-- Services and project process sections
-- Three.js room scene with orbit/zoom controls
-- Wall colour, floor finish, and lighting controls
-- GitHub Pages-ready static files
-- Project planning documents in `docs/`
+## Run locally (do NOT open index.html by double-click: ES modules need a server)
+    cd snk-architect
+    python3 -m http.server 8000      # then open http://localhost:8000
+(or VS Code "Live Server")
 
-## Run locally
 
-Because `script.js` uses JavaScript modules, open this folder with a local web server instead of opening `index.html` directly.
+## GitHub upload — important
+Upload the files INSIDE this folder so that `index.html` sits at the top level of the repository
+(do not upload the folder itself, or the site will show a 404). Expected top level of the repo:
+`index.html, services.html, portfolio.html, contact.html, planner.html, css/, js/, README.md`.
 
-Quick options:
-- VS Code + Live Server extension
-- Python: `python -m http.server 8000`, then open `http://localhost:8000`
+## Deploy on GitHub Pages
+1. Create a repository, upload the contents of this folder (index.html at the top level).
+2. Settings → Pages → Deploy from a branch → `main` / `(root)` → Save.
+3. Open the published URL and test every page on a phone and a desktop. All paths are relative.
 
-No build step or npm install is required. Three.js and Google Fonts load from CDNs, so internet access is needed.
+## Before publishing
+- Put your real email in `js/site.js` (`email`). Until then the form is disabled on purpose.
+- Add only real projects to `projects`. No contact details, testimonials or projects were invented.
 
-## Publish with GitHub Pages
+## Known limitations
+- Materials are plain colour + roughness (no textures yet). Real-time graphics ≠ offline renders.
+- Front wall is removed on purpose (cutaway view). Ceiling is see-through from above.
+- Light intensities were chosen without a visual test; adjust `LIGHTS` in `js/main.js` if too dark/bright.
+- Needs internet (Three.js loads from jsDelivr) and WebGL.
 
-1. Create a GitHub repository named `snk-architect` (or another name).
-2. Upload all files and folders from this ZIP to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Select branch `main` and folder `/ (root)`, then click **Save**.
-6. Wait for GitHub to publish the site; the URL will appear on the Pages settings screen.
+## Assets / licenses
+No images, textures or models are used. Three.js is MIT licensed (loaded from jsDelivr).
 
-If using a custom domain, configure the domain's DNS records as instructed by GitHub Pages, then add the domain in the repository's Pages settings.
-
-## Important prototype notes
-
-- This is a visual starter, not a construction-ready architectural model.
-- The current 3D room is assembled from simple Three.js geometry. It is not yet photorealistic.
-- For realistic final renders, consider Blender rendering, high-quality PBR textures, proper architectural models, and an optimized asset workflow.
-- Replace the placeholder contact email in `index.html` with your real business email.
-- Add real portfolio images, accurate service descriptions, and business contact details before launching publicly.
-
-## Project files
-
-- `index.html` — page structure
-- `style.css` — visual system and responsive layout
-- `script.js` — Three.js scene and controls
-- `docs/` — full project brief and Claude handoff prompt
+## Files not created (and why)
+`camera.js, materials.js, lighting.js, furniture.js, controls.js, export.js`, `responsive.css`, `studio.css`: merged into `js/main.js` and `css/style.css` to keep the first prototype small; split them when a feature outgrows the file.

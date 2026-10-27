@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Contact — SNK Architect</title><meta name="description" content="Architecture and interior visualization concepts with an interactive 3D studio."><meta name="theme-color" content="#111820"><link rel="stylesheet" href="css/style.css"></head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="nav"><div class="wrap"><a class="brand" href="index.html">SNK <b>ARCHITECT</b></a><nav aria-label="Main"><ul><li><a href="index.html#studio">3D Studio</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav></div></header>
+<main id="main">
+<section class="sec"><div class="wrap" style="max-width:640px"><p class="eyebrow">Contact</p><h1>Project inquiry</h1>
+<p class="muted">This form prepares an email in your own email app. Nothing is sent until you press Send there.</p>
+<form id="f" novalidate><div class="f"><label for="n">Name</label><input id="n" autocomplete="name" required></div><div class="f"><label for="e">Your email</label><input id="e" type="email" autocomplete="email" required></div>
+<div class="f"><label for="t">Project type</label><select id="t"><option>Interior design concept</option><option>House exterior</option><option>3D modeling / walkthrough</option><option>Other</option></select></div>
+<div class="f"><label for="m">Tell us about your project</label><textarea id="m" rows="5" required></textarea></div>
+<button class="btn" id="b" type="submit">Prepare email</button><div id="o" class="msg" role="status" hidden></div></form></div></section>
+<script type="module">
+import {SITE} from './js/site.js';
+const $=i=>document.getElementById(i),o=$('o');
+const say=(t,err)=>{o.hidden=false;o.className='msg'+(err?' err':'');o.textContent=t};
+if(!SITE.email){$('b').disabled=true;$('b').textContent='Unavailable until an email is set';say('The contact email has not been configured yet (js/site.js), so this form cannot send anything.',true)}
+$('f').onsubmit=e=>{e.preventDefault();if(!SITE.email)return;
+ const n=$('n').value.trim(),em=$('e').value.trim(),m=$('m').value.trim();
+ if(!n||!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)||m.length<10){say('Please enter your name, a valid email and a message of at least 10 characters.',true);return}
+ location.href='mailto:'+encodeURIComponent(SITE.email)+'?subject='+encodeURIComponent('Project inquiry: '+$('t').value)+'&body='+encodeURIComponent('Name: '+n+'\nEmail: '+em+'\n\n'+m);
+ say('Your email app should open with the message ready. It has not been sent until you press Send there.')};
+</script>
+</main>
+<footer><div class="wrap"><strong>SNK Architect</strong> · Design Beyond Imagination.<br>Design • Build • Visualize<br>Concept visualizations only — not construction drawings, structural or engineering advice.</div></footer>
+</body></html>

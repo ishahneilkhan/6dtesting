@@ -1,0 +1,40 @@
+:root{--c:#111820;--s:#202A34;--g:#D7B77B;--w:#F7F5F0;--m:#B8C0C8;--ln:#2e3b48}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--c);color:var(--w);font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--g)}h1,h2,h3{line-height:1.15;margin:0 0 .5em}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+.skip{position:absolute;left:-999px}.skip:focus{left:12px;top:12px;background:var(--g);color:var(--c);padding:8px 12px;z-index:9}
+.nav{position:sticky;top:0;z-index:5;background:rgba(17,24,32,.94);border-bottom:1px solid var(--ln)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:64px;flex-wrap:wrap}
+.brand{font-weight:800;letter-spacing:.14em;text-decoration:none;color:var(--w)}.brand b{color:var(--g)}
+.nav ul{display:flex;gap:20px;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.nav ul a{color:var(--m);text-decoration:none}.nav ul a:hover,.nav ul a[aria-current]{color:var(--g)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+.btn{display:inline-block;background:var(--g);color:var(--c);border:1px solid var(--g);border-radius:999px;padding:11px 22px;font:600 .95rem inherit;font-family:inherit;text-decoration:none;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--g)}.btn[disabled]{opacity:.5;cursor:not-allowed}
+.eyebrow{color:var(--g);letter-spacing:.18em;text-transform:uppercase;font-size:.8rem;margin:0 0 14px}
+.hero{padding:84px 0 36px}.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:12em}
+.lead{color:var(--m);font-size:1.12rem;max-width:36em}.cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+.sec{padding:56px 0 8px}.muted{color:var(--m)}
+.studio{display:grid;grid-template-columns:1fr 300px;gap:18px;margin-top:20px}
+.stage{position:relative;height:clamp(340px,60vh,640px);background:#0b1118;border:1px solid var(--ln);border-radius:20px;overflow:hidden}
+.stage canvas{width:100%;height:100%;display:block;touch-action:none}
+.status{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;background:rgba(11,17,24,.85);color:var(--m)}
+.status[hidden]{display:none}.status.err{color:#f0a39b}
+.panel{background:var(--s);border:1px solid var(--ln);border-radius:20px;padding:18px}
+fieldset{border:0;padding:0;margin:0 0 16px}legend{color:var(--g);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px;padding:0}
+.sw{display:flex;gap:8px;flex-wrap:wrap}.sw button{width:34px;height:34px;border-radius:50%;border:2px solid #52606e;cursor:pointer}
+.sw button[aria-pressed=true]{outline:3px solid var(--g);outline-offset:2px}
+.seg{display:flex;gap:6px}.seg button,.act button{flex:1;background:transparent;color:var(--w);border:1px solid #52606e;border-radius:10px;padding:8px;font:inherit;cursor:pointer}
+.seg button[aria-pressed=true]{background:var(--g);color:var(--c);border-color:var(--g)}
+.act{display:grid;gap:8px}.act button:hover{border-color:var(--g)}.act button[disabled]{opacity:.45;cursor:not-allowed}
+select,input,textarea{width:100%;background:var(--c);color:var(--w);border:1px solid #52606e;border-radius:10px;padding:10px;font:inherit}
+label.chk{display:block;margin:4px 0}label.chk input{width:auto;margin-right:8px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-top:18px}
+.card{background:var(--s);border:1px solid var(--ln);border-radius:18px;padding:22px}.card h3{font-size:1.1rem;color:var(--g)}
+.card .k{font-size:1.6rem;font-weight:800;color:var(--g)}
+.empty{border:1px dashed #52606e;border-radius:18px;padding:28px;color:var(--m)}
+form .f{margin-bottom:14px}form label{display:block;margin-bottom:4px;color:var(--m)}.msg{margin-top:12px;padding:12px;border-radius:10px;background:var(--s)}.msg.err{color:#f0a39b}
+footer{margin-top:72px;padding:28px 0 56px;border-top:1px solid var(--ln);color:var(--m);font-size:.88rem}
+@media(max-width:900px){.studio{grid-template-columns:1fr}}
+@media(max-width:560px){.nav ul{gap:12px;font-size:.92rem}.hero{padding-top:48px}}

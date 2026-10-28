@@ -27,3 +27,10 @@ Then open `http://localhost:8000`.
 - Three.js is loaded from `unpkg.com`; Google Fonts and portfolio reference photos load externally, so internet access is required.
 - Contact form prepares an email using `mailto:` and does not submit to a server. Replace `hello@snkarchitect.com` with the real contact address before launch.
 - Camera collision is approximate; the walkthrough currently clamps movement to a room/yard area rather than solving detailed wall and furniture collisions.
+
+
+## Premium brand update
+- Logo: `assets/snk-architect-logo.svg`
+- Favicon: `assets/favicon.svg`
+- Admin preview: open `admin.html`
+- The static admin preview saves in localStorage on the current browser only. It does not publish edits or provide secure multi-user administration. Commit edited site files to GitHub to publish public changes.

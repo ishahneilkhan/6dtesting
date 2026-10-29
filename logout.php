@@ -1,1 +1,0 @@
-<?php require 'config.php'; unset($_SESSION['user_email'],$_SESSION['is_admin']); session_regenerate_id(true); redirect('index.php');

@@ -1,0 +1,35 @@
+{
+  "users": [],
+  "orders": [],
+  "payments": [],
+  "vps_quotes": [],
+  "posts": [
+    {
+      "id": 1,
+      "title": "How to Choose a Hosting Plan",
+      "title_bn": "কীভাবে সঠিক হোস্টিং প্ল্যান বেছে নেবেন",
+      "slug": "choose-hosting-plan",
+      "excerpt": "A practical checklist for choosing hosting for a new website.",
+      "excerpt_bn": "নতুন ওয়েবসাইটের জন্য হোস্টিং বেছে নেওয়ার সহজ নির্দেশিকা।",
+      "body": "Start with the needs of your website. Check storage, bandwidth, email, backups, renewal pricing, and support terms before purchasing.",
+      "body_bn": "আপনার ওয়েবসাইটের প্রয়োজন বুঝে হোস্টিং বেছে নিন। কেনার আগে স্টোরেজ, ব্যান্ডউইথ, ইমেইল, ব্যাকআপ, নবায়ন মূল্য এবং সাপোর্টের শর্ত যাচাই করুন।",
+      "published": true,
+      "created": "2026-10-29"
+    },
+    {
+      "id": 2,
+      "title": "VPS vs Shared Hosting",
+      "title_bn": "VPS বনাম Shared Hosting",
+      "slug": "vps-vs-shared-hosting",
+      "excerpt": "Understand when a VPS may be useful for your project.",
+      "excerpt_bn": "কোন পরিস্থিতিতে VPS আপনার কাজে লাগতে পারে তা জানুন।",
+      "body": "Shared hosting is often a simple starting point for smaller websites. A VPS can provide more control, but it usually requires more server administration knowledge.",
+      "body_bn": "ছোট ওয়েবসাইটের জন্য shared hosting সহজ শুরু হতে পারে। VPS বেশি নিয়ন্ত্রণ দিতে পারে, তবে সাধারণত সার্ভার পরিচালনার বেশি জ্ঞান প্রয়োজন।",
+      "published": true,
+      "created": "2026-10-29"
+    }
+  ],
+  "next_order_id": 1001,
+  "next_payment_id": 5001,
+  "next_quote_id": 7001
+}

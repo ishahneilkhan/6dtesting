@@ -1,0 +1,1 @@
+<?php require 'config.php'; $_SESSION['lang'] = (($_GET['lang'] ?? 'en') === 'bn') ? 'bn' : 'en'; $back=$_SERVER['HTTP_REFERER'] ?? 'index.php'; if (strpos($back, '://') !== false && parse_url($back, PHP_URL_HOST) !== ($_SERVER['HTTP_HOST'] ?? '')) $back='index.php'; redirect($back);

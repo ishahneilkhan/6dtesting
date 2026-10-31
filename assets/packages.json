@@ -1,0 +1,8 @@
+{
+  "_note": "Edit prices/limits here until the Console is live. Add features only with numbers confirmed by your upstream provider. Set published:false to hide a package.",
+  "packages": [
+    { "slug": "starter", "published": true, "name_en": "Starter", "name_bn": "স্টার্টার", "tagline_en": "For a first website", "tagline_bn": "প্রথম ওয়েবসাইটের জন্য", "price_bdt": 999, "term_months": 12, "features": [] },
+    { "slug": "business", "published": true, "name_en": "Business", "name_bn": "বিজনেস", "tagline_en": "For a growing business", "tagline_bn": "বর্ধনশীল ব্যবসার জন্য", "price_bdt": 1499, "term_months": 12, "features": [] },
+    { "slug": "pro", "published": true, "name_en": "Pro", "name_bn": "প্রো", "tagline_en": "For bigger needs", "tagline_bn": "বড় প্রয়োজনের জন্য", "price_bdt": 2499, "term_months": 12, "features": [] }
+  ]
+}

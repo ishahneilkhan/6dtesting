@@ -1,11 +1,17 @@
 # HOSTNEIL
 
-Website + order flow + HOSTNEIL Console for a white-label web hosting reseller (Bangladesh).
-Stack: Cloudflare Pages (Astro) + Workers (Hono) + D1. Full spec in [`docs/`](docs).
+Website + order flow for a white-label web hosting reseller (Bangladesh). Full spec in [`docs/`](docs).
 
-## Start
-1. Create a **private** GitHub repo and push this folder.
-2. Open the repo in Claude Code or Cursor. The agent reads `CLAUDE.md` / `.cursorrules` and all 6 files in `docs/`.
-3. Tell it: "Do the next unticked step in docs/06_Plan.md." Repeat. Steps marked (OWNER) need you in a Cloudflare/Resend dashboard.
+## Live site (GitHub Pages)
+Files at the repo root (`index.html`, `en/`, `assets/` ...) are the website. Bangla is default; English is under `/en/`.
+Set Pages to: Settings -> Pages -> Deploy from branch -> `main` / `(root)`.
 
-Never commit secrets (`.dev.vars`, `.env`, `backups/`). Secrets go in `wrangler secret put`.
+## Edit without coding
+- `assets/config.js` : WhatsApp number, email, bKash/Nagad/bank details (empty = hidden).
+- `assets/packages.json` : prices and package limits (add limits only after your provider confirms them).
+After editing text in `tools/build.mjs`, run `node tools/build.mjs` and commit the generated files.
+
+## Next steps
+Order submission, status check and the admin Console need the Cloudflare Worker + D1 (see `docs/06_Plan.md`).
+Until `API_BASE` in `assets/config.js` is set, orders go to you via WhatsApp.
+Never commit secrets. This repo's `assets/config.js` is public.
